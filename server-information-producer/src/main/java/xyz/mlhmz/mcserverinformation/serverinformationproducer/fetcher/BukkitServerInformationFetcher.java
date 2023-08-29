@@ -4,6 +4,7 @@ import org.bukkit.Server;
 import org.bukkit.entity.Player;
 import xyz.mlhmz.mcserverinformation.serverinformationproducer.Information;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -31,7 +32,8 @@ public class BukkitServerInformationFetcher implements InformationFetcher {
         int maxPlayerCount = server.getMaxPlayers();
         long worldCount = server.getWorlds().size();
         return new Information(
-                motd, ip, serverName, version, onlinePlayerNames, playerCount, maxPlayerCount, worldCount
+                motd, ip, serverName, version, onlinePlayerNames, playerCount, maxPlayerCount, worldCount,
+                LocalDateTime.now()
         );
     }
 }

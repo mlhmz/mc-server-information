@@ -1,5 +1,6 @@
 package xyz.mlhmz.mcserverinformation.serverinformationproducer;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -22,5 +23,6 @@ public record Information(
     List<String> onlinePlayerNames,
     long playerCount,
     int maxPlayerCount,
-    long worldCount
+    long worldCount,
+    LocalDateTime lastFetched
 ) {}

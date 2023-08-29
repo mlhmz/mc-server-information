@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import redis.clients.jedis.Jedis;
 import xyz.mlhmz.mcserverinformation.serverinformationproducer.Information;
 import xyz.mlhmz.mcserverinformation.serverinformationproducer.ServerInformationProducer;
-import xyz.mlhmz.mcserverinformation.serverinformationproducer.fetcher.InformationFetcher;
 
 import java.util.logging.Level;
 
