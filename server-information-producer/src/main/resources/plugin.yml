@@ -2,3 +2,7 @@ name: ServerInformationProducer
 version: '${version}'
 main: xyz.mlhmz.mcserverinformation.serverinformationproducer.ServerInformationProducer
 api-version: '1.20'
+
+commands:
+  sip:
+    description: Utility command for this plugin
