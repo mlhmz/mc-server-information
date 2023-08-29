@@ -1,0 +1,4 @@
+name: ServerInformationProducer
+version: '${version}'
+main: xyz.mlhmz.mcserverinformation.serverinformationproducer.ServerInformationProducer
+api-version: '1.20'
