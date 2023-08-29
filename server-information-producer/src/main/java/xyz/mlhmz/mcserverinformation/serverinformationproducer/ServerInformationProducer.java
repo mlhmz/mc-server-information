@@ -56,7 +56,7 @@ public final class ServerInformationProducer extends JavaPlugin {
         redisPort = this.getConfig().getInt("redis.port", 6379);
         redisChannel = this.getConfig().getString("redis.channel", "server-info");
         scheduleDelay = this.getConfig().getInt("scheduling.delay", 10);
-        serverName = this.getConfig().getString("info.serverName", this.getServerName());
+        serverName = this.getConfig().getString("info.serverName", this.getServer().getName());
         Runnable informationTaskExecution = () -> {
             try (JedisPool jedisPool = new JedisPool(redisHost, redisPort)) {
                 InformationTask informationTask = new InformationTask(

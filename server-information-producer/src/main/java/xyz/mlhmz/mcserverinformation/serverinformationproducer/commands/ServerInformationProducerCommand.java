@@ -58,11 +58,13 @@ public class ServerInformationProducerCommand implements CommandExecutor {
             return;
         }
         sender.sendMessage("ServerInformationProducer Info");
-        sender.sendMessage("Redis");
+        sender.sendMessage("Overall:");
+        sender.sendMessage(String.format("Server Name: %s", plugin.getServerName()));
+        sender.sendMessage("Redis:");
         sender.sendMessage(String.format("Host: %s", plugin.getRedisHost()));
         sender.sendMessage(String.format("Port: %d", plugin.getRedisPort()));
         sender.sendMessage(String.format("Channel: %s", plugin.getRedisChannel()));
-        sender.sendMessage("Scheduling");
+        sender.sendMessage("Scheduling:");
         sender.sendMessage(String.format("Delay: %d", plugin.getScheduleDelay()));
         sender.sendMessage(String.format("Last Executed: %s",
                 DateTimeFormatter.ofPattern("yyyy.MM.dd hh:mm:ss").format(plugin.getLastExecution())));
