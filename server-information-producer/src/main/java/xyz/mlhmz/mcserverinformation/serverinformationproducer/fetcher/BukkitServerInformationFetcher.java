@@ -17,7 +17,7 @@ public class BukkitServerInformationFetcher implements InformationFetcher {
     }
 
     @Override
-    public Information fetchInformation() {
+    public Information fetch() {
         String motd = server.getMotd();
         String ip = server.getIp();
         String name = server.getName();
