@@ -8,6 +8,7 @@ import xyz.mlhmz.mcserverinformation.serverinformationproducer.commands.ServerIn
 import xyz.mlhmz.mcserverinformation.serverinformationproducer.fetcher.BukkitServerInformationFetcher;
 import xyz.mlhmz.mcserverinformation.serverinformationproducer.publisher.RedisInformationPublisher;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public final class ServerInformationProducer extends JavaPlugin {
@@ -19,6 +20,10 @@ public final class ServerInformationProducer extends JavaPlugin {
     private int redisPort;
     @Getter
     private String redisChannel;
+    @Getter
+    private int scheduleDelay;
+    @Getter
+    private LocalDateTime lastExecution = LocalDateTime.now();
 
     @Override
     public void onEnable() {
@@ -48,6 +53,7 @@ public final class ServerInformationProducer extends JavaPlugin {
         redisHost = this.getConfig().getString("redis.host", "localhost");
         redisPort = this.getConfig().getInt("redis.port", 6379);
         redisChannel = this.getConfig().getString("redis.channel", "server-info");
+        scheduleDelay = this.getConfig().getInt("scheduling.delay", 10);
         Runnable informationTaskExecution = () -> {
             try (JedisPool jedisPool = new JedisPool(redisHost, redisPort)) {
                 InformationTask informationTask = new InformationTask(
@@ -55,9 +61,11 @@ public final class ServerInformationProducer extends JavaPlugin {
                         new RedisInformationPublisher(jedisPool.getResource(), redisChannel, this)
                 );
                 informationTask.execute();
+                lastExecution = LocalDateTime.now();
             }
         };
-        task = this.getServer().getScheduler().runTaskTimer(this, informationTaskExecution, 1000, 1000);
+        task = this.getServer().getScheduler()
+                .runTaskTimer(this, informationTaskExecution, 20L * scheduleDelay, 20L * scheduleDelay);
     }
 
 }

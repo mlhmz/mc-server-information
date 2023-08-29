@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 import xyz.mlhmz.mcserverinformation.serverinformationproducer.ServerInformationProducer;
 
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class ServerInformationProducerCommand implements CommandExecutor {
                              String[] args) {
         Map<String, Runnable> subCommands = getSubCommands(sender);
         String availableCommands = String.join("|", subCommands.keySet());
-        if (args[0] == null) {
+        if (args.length == 0 || args[0] == null) {
             sender.sendMessage(String.format("No args were provided. Please try again. Usage: /%s <%s>", label,
                     availableCommands));
             return false;
@@ -61,5 +62,9 @@ public class ServerInformationProducerCommand implements CommandExecutor {
         sender.sendMessage(String.format("Host: %s", plugin.getRedisHost()));
         sender.sendMessage(String.format("Port: %d", plugin.getRedisPort()));
         sender.sendMessage(String.format("Channel: %s", plugin.getRedisChannel()));
+        sender.sendMessage("Scheduling");
+        sender.sendMessage(String.format("Delay: %d", plugin.getScheduleDelay()));
+        sender.sendMessage(String.format("Last Executed: %s",
+                DateTimeFormatter.ofPattern("yyyy.MM.dd hh:mm:ss").format(plugin.getLastExecution())));
     }
 }
