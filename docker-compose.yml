@@ -8,6 +8,18 @@ services:
       - '6379:6379'
     volumes:
       - cache:/data
+  mc-server:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "TRUE"
+      TYPE: PAPER
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./.data:/data
+    links:
+      - cache
+
 volumes:
   cache:
     driver: local
