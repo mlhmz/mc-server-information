@@ -15,6 +15,8 @@ public final class ServerInformationProducer extends JavaPlugin {
     public static final String SIP_COMMAND_KEY = "sip";
     private BukkitTask task;
     @Getter
+    private String serverName;
+    @Getter
     private String redisHost;
     @Getter
     private int redisPort;
@@ -54,10 +56,11 @@ public final class ServerInformationProducer extends JavaPlugin {
         redisPort = this.getConfig().getInt("redis.port", 6379);
         redisChannel = this.getConfig().getString("redis.channel", "server-info");
         scheduleDelay = this.getConfig().getInt("scheduling.delay", 10);
+        serverName = this.getConfig().getString("info.serverName", this.getServerName());
         Runnable informationTaskExecution = () -> {
             try (JedisPool jedisPool = new JedisPool(redisHost, redisPort)) {
                 InformationTask informationTask = new InformationTask(
-                        new BukkitServerInformationFetcher(this.getServer()),
+                        new BukkitServerInformationFetcher(serverName, this.getServer()),
                         new RedisInformationPublisher(jedisPool.getResource(), redisChannel, this)
                 );
                 informationTask.execute();

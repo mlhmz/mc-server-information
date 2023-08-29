@@ -11,8 +11,10 @@ import java.util.List;
  */
 public class BukkitServerInformationFetcher implements InformationFetcher {
     private final Server server;
+    private final String serverName;
 
-    public BukkitServerInformationFetcher(Server server) {
+    public BukkitServerInformationFetcher(String serverName, Server server) {
+        this.serverName = serverName;
         this.server = server;
     }
 
@@ -20,7 +22,6 @@ public class BukkitServerInformationFetcher implements InformationFetcher {
     public Information fetch() {
         String motd = server.getMotd();
         String ip = server.getIp();
-        String name = server.getName();
         String version = server.getVersion();
         List<String> onlinePlayerNames = server.getOnlinePlayers().stream()
                 .map(Player::getDisplayName)
@@ -30,7 +31,7 @@ public class BukkitServerInformationFetcher implements InformationFetcher {
         int maxPlayerCount = server.getMaxPlayers();
         long worldCount = server.getWorlds().size();
         return new Information(
-                motd, ip, name, version, onlinePlayerNames, playerCount, maxPlayerCount, worldCount
+                motd, ip, serverName, version, onlinePlayerNames, playerCount, maxPlayerCount, worldCount
         );
     }
 }
