@@ -49,6 +49,6 @@ Example JSON Payload
 },
 ```
 
-System Structure
+System Structure  
 ![System Structure](https://github.com/mlhmz/mc-server-information/assets/66556288/7fb36a81-437a-4faa-a87c-e0042df98495)
 
