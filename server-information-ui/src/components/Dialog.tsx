@@ -25,12 +25,12 @@ export const Dialog = ({
         <hr className="w-full border-stone-700" />
         <div className="flex flex-col items-center gap-3 w-full h-[200px] overflow-hidden overflow-y-auto">
           {selection.onlinePlayerNames?.map((player, index) => (
-            <>
-              <p key={index} className="px-3 text-white">
+            <div className="w-full flex flex-col gap-3" key={index}>
+              <p className="px-3 text-white">
                 {index}. {player}
               </p>
               <hr className="w-full border-stone-700" />
-            </>
+            </div>
           ))}
         </div>
       </dialog>

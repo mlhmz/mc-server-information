@@ -30,10 +30,6 @@ function App() {
     return name.toLowerCase().includes(searchValue.toLowerCase());
   };
 
-  useEffect(() => {
-    console.log(isDialogOpen);
-  }, [isDialogOpen]);
-
   return (
     <>
       <div className="antialiased">
