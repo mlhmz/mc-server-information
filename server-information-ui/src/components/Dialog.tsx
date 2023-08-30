@@ -14,7 +14,7 @@ export const Dialog = ({
   return (
     <>
       <dialog
-        className="p-5 my-5 rounded-md bg-stone-800 border border-stone-700 fixed flex flex-col gap-3 justify-center w-6/9"
+        className="p-5 my-5 rounded-md bg-stone-800 border border-stone-700 fixed flex flex-col gap-3 justify-center w-full md:w-1/3"
       >
         <button className="text-white self-end" onClick={() => {closeDialog()}}>
           X
