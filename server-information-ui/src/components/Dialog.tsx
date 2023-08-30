@@ -1,5 +1,6 @@
 import { Dispatch } from "react";
 import { Information } from "../Information";
+import { Icons } from "./Icons";
 
 export const Dialog = ({
   selection,
@@ -17,7 +18,7 @@ export const Dialog = ({
         className="p-5 my-5 rounded-md bg-stone-800 border border-stone-700 fixed flex flex-col gap-3 justify-center w-full md:w-1/3"
       >
         <button className="text-white self-end" onClick={() => {closeDialog()}}>
-          X
+          <Icons.x />
         </button>
         <h1 className="text-white text-2xl font-bold">
           {selection.name}'s Players
