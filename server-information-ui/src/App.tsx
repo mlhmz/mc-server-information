@@ -7,18 +7,16 @@ import Dialog from "./components/Dialog";
 import { formatDate } from "./utils/date";
 
 function App() {
-  const { data, refresh } = useInformation();
+  const { data, refresh, lastRefresh } = useInformation();
   const [selection, setSelection] = useState<Information | undefined>(
     undefined
   );
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
 
   useEffect(() => {
     const interval = setInterval(() => {
       refresh();
-      setLastRefresh(new Date());
     }, 1000 * 30);
 
     return () => clearInterval(interval);
@@ -34,24 +32,27 @@ function App() {
   return (
     <>
       <div className="antialiased">
-        <Nav
-          lastRefresh={formatDate(lastRefresh)}
-        />
+        <Nav lastRefresh={formatDate(lastRefresh)} />
         <Dialog
           selection={selection}
           open={isDialogOpen}
           closeDialog={() => {
-            setIsDialogOpen(false)
+            setIsDialogOpen(false);
           }}
         />
         <div className="pt-36">
           <div className="flex flex-col items-center md:w-9/12 lg:w-1/2 xl:w-9/12 m-auto gap-4">
-            <input
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              placeholder="Search for Name"
-              className="bg-stone-800 border border-stone-700 rounded-md py-2 px-2 w-1/2"
-            />
+            <div className="w-1/2 flex flex-row items-center justify-center gap-5">
+              <input
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+                placeholder="Search for Name"
+                className="bg-stone-800 border border-stone-700 rounded-md py-2 px-2"
+              />
+              <button onClick={() => refresh()}>
+                Reload
+              </button>
+            </div>
             <div className="flex flex-col xl:flex-row xl:flex-wrap items-center justify-center">
               {data
                 .filter(isInformationContainingSearchValue)
