@@ -9,19 +9,22 @@ async function fetchInformation(): Promise<Information[]> {
 
 const useInformation = () => {
   const [data, setData] = useState<Information[]>([]);
+  const [loading, setLoading] = useState(false);
   const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
 
   const refresh = useCallback(async () => {
+    setLoading(true);
     const data = await fetchInformation();
     setData(data);
     setLastRefresh(new Date());
+    setLoading(false);
   }, []);
 
   useEffect(() => {
     refresh();
   }, [refresh]);
 
-  return { data, refresh, lastRefresh };
+  return { data, refresh, lastRefresh, loading };
 };
 
 export default useInformation;

@@ -5,9 +5,10 @@ import useInformation from "./hooks/use-information";
 import { Information } from "./Information";
 import Dialog from "./components/Dialog";
 import { formatDate } from "./utils/date";
+import { Icons } from "./components/Icons";
 
 function App() {
-  const { data, refresh, lastRefresh } = useInformation();
+  const { data, refresh, lastRefresh, loading } = useInformation();
   const [selection, setSelection] = useState<Information | undefined>(
     undefined
   );
@@ -50,7 +51,7 @@ function App() {
                 className="bg-stone-800 border border-stone-700 rounded-md py-2 px-2"
               />
               <button onClick={() => refresh()}>
-                Reload
+                <Icons.refresh className={`${loading ? "animate-spin" : ""}`} />
               </button>
             </div>
             <div className="flex flex-col xl:flex-row xl:flex-wrap items-center justify-center">
