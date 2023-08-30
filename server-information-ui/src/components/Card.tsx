@@ -2,7 +2,7 @@ import { Information } from "../Information";
 
 export const Card = ({ information }: { information: Information }) => {
   return (
-    <div className="m-3 p-3 rounded-md border border-stone-700 bg-stone-800 flex flex-col items-center gap-5 xl:w-1/3 xl:h-[410px]">
+    <div className="m-3 p-3 rounded-md border border-stone-700 bg-stone-800 flex flex-col items-center gap-5 xl:w-1/3">
       <h2 className="text-2xl font-bold">{information.name}</h2>
       <div className="flex gap-3">
           <label htmlFor="lastFetched" className="font-bold">Last Fetched</label>
