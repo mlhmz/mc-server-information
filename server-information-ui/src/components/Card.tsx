@@ -1,5 +1,6 @@
 import { Dispatch } from "react";
 import { Information } from "../Information";
+import { formatDate, parseIsoDate } from "../utils/date";
 
 export const Card = ({ information, handleSelection }: { information: Information, handleSelection: Dispatch<Information> }) => {
   return (
@@ -12,7 +13,7 @@ export const Card = ({ information, handleSelection }: { information: Informatio
         <label htmlFor="lastFetched" className="font-bold">
           Last Fetched
         </label>
-        <p>{information.lastFetched ?? "N/A"}</p>
+        <p>{information.lastFetched ? formatDate(parseIsoDate(information.lastFetched)) : "N/A"}</p>
       </div>
       <div className="grid grid-cols-2 grid-rows-3 gap-5">
         <div className="flex  gap-3">

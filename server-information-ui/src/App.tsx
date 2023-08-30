@@ -4,6 +4,7 @@ import { Nav } from "./components/Nav";
 import useInformation from "./hooks/use-information";
 import { Information } from "./Information";
 import Dialog from "./components/Dialog";
+import { formatDate } from "./utils/date";
 
 function App() {
   const { data, refresh } = useInformation();
@@ -34,7 +35,7 @@ function App() {
     <>
       <div className="antialiased">
         <Nav
-          lastRefresh={`${lastRefresh.toLocaleDateString()} ${lastRefresh.toLocaleTimeString()}`}
+          lastRefresh={formatDate(lastRefresh)}
         />
         <Dialog
           selection={selection}
