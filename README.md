@@ -3,6 +3,8 @@
 ## About
 MC Server Information is a little toolchain that is splitted into a producer, a consumer mc plugin and a ui.
 
+It provides overall information of minecraft servers into one central data source.
+
 The producers talk over Redis SubPub to the Consumers and publish their Server Information.
 The producer server information is gathered over the Spigot API for Minecraft Plugins, with which the jar can be then put into a minecraft server.
 
