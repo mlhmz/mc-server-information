@@ -10,7 +10,7 @@ async function fetchInformation(): Promise<Information[]> {
 const useInformation = () => {
   const [data, setData] = useState<Information[]>([]);
   const [loading, setLoading] = useState(false);
-  const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
+  const [lastRefresh, setLastRefresh] = useState<Date | undefined>(undefined);
 
   const refresh = useCallback(async () => {
     setLoading(true);

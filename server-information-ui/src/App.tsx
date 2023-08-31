@@ -33,7 +33,7 @@ function App() {
   return (
     <>
       <div className="antialiased">
-        <Nav lastRefresh={formatDate(lastRefresh)} />
+        <Nav lastRefresh={lastRefresh ? formatDate(lastRefresh) : ""} />
         <Dialog
           selection={selection}
           open={isDialogOpen}
