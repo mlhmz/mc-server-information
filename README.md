@@ -19,11 +19,11 @@ Over a GET Route, the Information can be read then.
 
 ## Screenshots & Resources
 Overall UI
-![Overall UI](https://github.com/mlhmz/mc-server-information/assets/66556288/4637ffb2-e6ae-40bb-88b2-62f66ed0f177)
-
+![image](https://github.com/mlhmz/mc-server-information/assets/66556288/f91fc515-8ba4-4bcb-8b37-6d7a8a328d2d)
 
 Player Dialog
-![Player Dialog](https://github.com/mlhmz/mc-server-information/assets/66556288/7fbe231b-683d-421c-88bc-f24c5c3edb92)
+![image](https://github.com/mlhmz/mc-server-information/assets/66556288/aa046006-3e7a-4519-89b1-91417774e6e8)
+
 
 Example JSON Payload
 ```json
