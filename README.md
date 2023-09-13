@@ -1,7 +1,7 @@
 # MC Server Information
 
 ## About
-MC Server Information is a little toolchain that is splitted into a producer, a consumer mc plugin and a ui.
+MC Server Information is a little toolchain that is splitted into a producer, a consumer mc plugin and an ui.
 
 It provides overall information of minecraft servers into one central data source.
 
